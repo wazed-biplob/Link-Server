@@ -1,0 +1,21 @@
+{
+  "name": "link",
+  "version": "1.0.0",
+  "description": "A social platform server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --watch src/**/*.ts --respawn --transpile-only src/server.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.2"
+  }
+}
