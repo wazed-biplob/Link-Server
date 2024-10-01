@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import { userServices } from "./UserServices";
 import { catchAsync } from "../../utils/functions";
 

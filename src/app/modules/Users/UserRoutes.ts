@@ -7,4 +7,4 @@ router.get("/all-users", userController.getAllUser);
 
 router.post("/create-user", userController.createUser);
 
-export const UserRoutes = router;
+export const userRoutes = router;
