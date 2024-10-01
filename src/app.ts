@@ -1,9 +1,15 @@
-import express, { Application, Request, Response } from "express";
-
+import express, { Application, NextFunction, Request, Response } from "express";
+import cors from "cors";
+import { router } from "./app/routes";
 export const app: Application = express();
 
-const port: number = 5000;
+app.use(express.json());
+app.use(cors());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send(`The server is running at port ${port}`);
+app.use("/api/v1", router);
+
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+  res.json({
+    error: error,
+  });
 });
