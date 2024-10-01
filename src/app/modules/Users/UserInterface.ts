@@ -10,4 +10,8 @@ export interface IUser {
 
 export interface UserModel extends Model<IUser> {
   userExistsByEmail(email: string): Promise<IUser>;
+  passwordMatch(
+    plainPassword: string,
+    hashedPassword: string
+  ): Promise<boolean>;
 }
