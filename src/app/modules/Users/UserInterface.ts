@@ -4,5 +4,4 @@ export interface IUser {
   password: string;
   profilePicture: string;
   bio: string;
-  createdAt: Date;
 }
