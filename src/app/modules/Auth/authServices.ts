@@ -1,8 +1,11 @@
 import { User } from "../Users/UserModel";
 
 const login = async (loginData: { email: string; password: string }) => {
-  const result = await User.find({ email: loginData.email });
-  return result;
+  const user = await User.userExistsByEmail(loginData.email);
+  if (!user) {
+    throw new Error("No User Found!");
+  }
+  return user;
 };
 
 export const authServices = { login };

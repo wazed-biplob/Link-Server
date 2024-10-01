@@ -15,7 +15,7 @@ app.use("/api/v1", router);
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   res.status(409).json({
     success: false,
-    message: err.code,
+    message: err.message,
     error: err,
   });
 });
