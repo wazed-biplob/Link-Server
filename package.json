@@ -4,7 +4,8 @@
   "description": "A social platform server",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --watch src/**/*.ts --respawn --transpile-only src/server.ts"
+    "dev": "ts-node-dev --watch src/**/*.ts --respawn --transpile-only src/server.ts",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
