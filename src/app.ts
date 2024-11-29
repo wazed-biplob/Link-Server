@@ -3,8 +3,6 @@ import cors from "cors";
 import { router } from "./app/routes";
 import httpStatus from "http-status";
 
-import mongoose from "mongoose";
-
 export const app: Application = express();
 
 app.use(express.json());

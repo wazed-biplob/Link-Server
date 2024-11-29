@@ -1,16 +1,30 @@
 import bcrypt from "bcrypt";
 import { model, Schema } from "mongoose";
 import { IUser, UserModel } from "./UserInterface";
+import { optional, string } from "zod";
 
 const userSchema = new Schema<IUser, UserModel>(
   {
-    userName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    profilePicture: { type: String },
-    bio: { type: String },
+    imgURL: { type: String, required: optional },
   },
-  { timestamps: true }
+
+  {
+    timestamps: true,
+    toJSON: {
+      transform: function (doc, ret) {
+        delete ret.password;
+        return ret;
+      },
+    },
+    toObject: {
+      transform: function (doc, ret) {
+        delete ret.password;
+        return ret;
+      },
+    },
+  }
 );
 
 userSchema.statics.userExistsByEmail = async function (email: string) {

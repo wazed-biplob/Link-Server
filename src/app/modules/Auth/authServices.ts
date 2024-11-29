@@ -3,6 +3,7 @@ import { ILogin } from "./authInterface";
 
 const login = async (loginData: ILogin) => {
   const user = await User.userExistsByEmail(loginData.email);
+
   if (!user) {
     throw new Error("No User Found!");
   }
@@ -10,6 +11,7 @@ const login = async (loginData: ILogin) => {
     loginData.password,
     user?.password
   );
+  console.log("p", passwordMatch);
   if (!passwordMatch) {
     throw new Error("Password Incorrect!");
   }

@@ -12,8 +12,16 @@ const getAllUser = catchAsync(async (req: Request, res: Response) => {
 });
 
 const createUser = catchAsync(async (req: Request, res: Response) => {
-  console.log(req.body);
   const result = await userServices.createUser(req.body);
+  res.json({
+    success: true,
+    message: "New user created successfully",
+    data: result,
+  });
+});
+
+const postProfilePicture = catchAsync(async (req: Request, res: Response) => {
+  const result = await userServices.postProfilePicture(req.body);
   res.json({
     success: true,
     message: "New user created successfully",
@@ -24,4 +32,5 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
 export const userController = {
   getAllUser,
   createUser,
+  postProfilePicture,
 };

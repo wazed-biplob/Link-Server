@@ -7,7 +7,7 @@ const router = Router();
 
 router.post(
   "/login",
-  validateRequest(authValidations.loginValidationSchema),
+  // validateRequest(authValidations.loginValidationSchema),
   authControllers.login
 );
 

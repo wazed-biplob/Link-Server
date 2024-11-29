@@ -6,7 +6,9 @@ let server: Server;
 
 async function main() {
   try {
-    mongoose.connect(config.database_url as string);
+    mongoose
+      .connect(config.database_url as string)
+      .then(() => console.log("MongoDB connected."));
     app.listen(config.port, () => {
       console.log(`app is running at ${config.port}`);
     });
@@ -16,19 +18,3 @@ async function main() {
 }
 
 main();
-
-process.on("unhandledRejection", () => {
-  console.log(`unhandled rejection detected, shutting down the server...`);
-  if (server) {
-    server.close(() => {
-      process.exit(1);
-    });
-  }
-  process.exit(1);
-});
-
-process.on("uncaughtException", () => {
-  console.log(`uncaught exception detected, shutting down the server...`);
-
-  process.exit(1);
-});

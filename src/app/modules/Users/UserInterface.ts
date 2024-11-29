@@ -1,11 +1,9 @@
 import { Model } from "mongoose";
 
 export interface IUser {
-  userName: string;
   email: string;
   password: string;
-  profilePicture: string;
-  bio: string;
+  imgURL?: string;
 }
 
 export interface UserModel extends Model<IUser> {
