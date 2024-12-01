@@ -7,7 +7,7 @@ const userSchema = new Schema<IUser, UserModel>(
   {
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    imgURL: { type: String, required: optional },
+    imgURL: { type: String, required: false },
   },
 
   {

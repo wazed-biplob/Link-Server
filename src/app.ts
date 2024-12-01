@@ -9,6 +9,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1", router);
+app.use("/", (req, res) => {
+  res.send("server running.");
+});
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   res.status(409).json({

@@ -5,8 +5,9 @@ const createPost = async (postData: IPost) => {
   const result = await POST.create(postData);
   return result;
 };
-const getPost = async () => {
-  const result = await POST.find().sort({ createdAt: -1 });
+const getPost = async (userId: string) => {
+  const result = await POST.find({ userId: userId }).sort({ createdAt: -1 });
+
   return result;
 };
 

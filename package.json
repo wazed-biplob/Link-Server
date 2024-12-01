@@ -2,10 +2,14 @@
   "name": "link",
   "version": "1.0.0",
   "description": "A social platform server",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --watch src/**/*.ts --respawn --transpile-only src/server.ts",
-    "build": "tsc"
+    "start": "node ./dist/server.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src --ignore-path .eslintignore --ext .ts",
+    "fix:dev": "npx eslint src --fix"
   },
   "author": "",
   "license": "ISC",

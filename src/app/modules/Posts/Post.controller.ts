@@ -12,12 +12,20 @@ const createPost = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getPost = catchAsync(async (req: Request, res: Response) => {
-  const result = await postServices.getPost();
-  res.json({
-    success: true,
-    message: "New post retrieved successfully",
-    data: result,
-  });
+  const { userId } = req.params;
+  const result = await postServices.getPost(userId);
+  if (result.length === 0) {
+    res.json({
+      success: false,
+      message: "No Posts",
+    });
+  } else {
+    res.json({
+      success: true,
+      message: "New post retrieved successfully",
+      data: result,
+    });
+  }
 });
 
 export const postController = {

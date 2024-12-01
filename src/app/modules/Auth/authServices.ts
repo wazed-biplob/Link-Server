@@ -11,7 +11,7 @@ const login = async (loginData: ILogin) => {
     loginData.password,
     user?.password
   );
-  console.log("p", passwordMatch);
+
   if (!passwordMatch) {
     throw new Error("Password Incorrect!");
   }

@@ -7,6 +7,7 @@ const postSchema = new Schema<IPost>(
     userId: { type: Schema.Types.ObjectId, ref: User },
     postHeading: { type: String },
     postContent: { type: String },
+    postPicture: { type: String, required: false },
   },
   { timestamps: true }
 );
