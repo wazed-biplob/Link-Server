@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use("/api/v1", router);
 app.use("/", (req, res) => {
-  res.send("server running.");
+  res.send("server running ok.");
 });
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
