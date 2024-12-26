@@ -1,3 +1,4 @@
+import { IUserData } from "../../interface/interfaces";
 import { User } from "../Users/UserModel";
 import { ILogin } from "./authInterface";
 
@@ -19,4 +20,14 @@ const login = async (loginData: ILogin) => {
   return user;
 };
 
-export const authServices = { login };
+const createUser = async (userData: IUserData) => {
+  const user = await User.userExistsByEmail(userData.email);
+
+  if (user) {
+    throw new Error("User already exists with this email!");
+  }
+
+  return user;
+};
+
+export const authServices = { login, createUser };

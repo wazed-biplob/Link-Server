@@ -7,8 +7,14 @@ const router = Router();
 
 router.post(
   "/login",
-  // validateRequest(authValidations.loginValidationSchema),
+  validateRequest(authValidations.loginValidationSchema),
   authControllers.login
+);
+
+router.post(
+  "/create-user",
+  // validateRequest(authValidations.loginValidationSchema),
+  authControllers.createUser
 );
 
 export const authRoutes = router;

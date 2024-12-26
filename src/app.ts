@@ -6,7 +6,12 @@ import httpStatus from "http-status";
 export const app: Application = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://wb-link.vercel.app/",
+    methods: ["GET", "POST"],
+  })
+);
 
 app.use("/api/v1", router);
 app.use("/", (req, res) => {
