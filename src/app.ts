@@ -2,21 +2,41 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { router } from "./app/routes";
 import httpStatus from "http-status";
+import mongoose from "mongoose";
 
 export const app: Application = express();
 
 app.use(express.json());
+const allowedOrigins = ["http://localhost:3000"];
 app.use(
   cors({
-    origin: "https://wb-link.vercel.app/",
-    methods: ["GET", "POST"],
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "DELETE", "UPDATE"],
   })
 );
 
-app.use("/api/v1", router);
-app.use("/", (req, res) => {
-  res.send("server running ok.");
+app.use("/api/v1/db/db-status", (req: Request, res) => {
+  const connectionState = mongoose.connection.readyState;
+  if (connectionState === 2) {
+    res.json({ status: "pending", message: "Connecting to Database..." });
+  } else if (connectionState === 1) {
+    res.json({
+      status: "success",
+      message: "Successfully connected.",
+    });
+  } else {
+    res.json({ status: "error", message: "Database is not connected" });
+  }
 });
+
+app.use("/api/v1", router);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   res.status(409).json({
