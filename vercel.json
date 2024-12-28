@@ -5,7 +5,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "includeFiles": ["src/**", "tsconfig.json"]
+        "includeFiles": ["src/**", "tsconfig.json", "dist/**"]
       }
     }
   ],
