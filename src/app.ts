@@ -3,8 +3,9 @@ import cors from "cors";
 import { router } from "./app/routes";
 import httpStatus from "http-status";
 import mongoose from "mongoose";
+import config from "./app/config";
 
-export const app: Application = express();
+const app: Application = express();
 
 app.use(express.json());
 const allowedOrigins = ["http://localhost:3000"];
@@ -53,3 +54,20 @@ app.use((req: Request, res: Response) => {
     error: "API not found.",
   });
 });
+
+async function main() {
+  try {
+    mongoose
+      .connect(config.database_url as string)
+      .then(() => console.log("MongoDB connected."));
+    app.listen(config.port, () => {
+      console.log(`app is running at ${config.port}`);
+    });
+  } catch (e) {
+    console.log(`Error : `, e);
+  }
+}
+
+main();
+
+export default app;
