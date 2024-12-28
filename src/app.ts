@@ -8,7 +8,7 @@ import config from "./app/config";
 const app: Application = express();
 
 app.use(express.json());
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = ["http://localhost:3000", "https://wb-link.vercel.app"];
 app.use(
   cors({
     origin: (origin, callback) => {
