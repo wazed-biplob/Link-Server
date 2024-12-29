@@ -8,4 +8,5 @@ router.post("/update-post/:postId", postController.updatePost);
 router.get("/post-wall/:userId", postController.getPosts);
 router.get("/post-wall", postController.getAllPost);
 router.get("/get-post/:postId", postController.getPost);
+router.delete("/delete-post/:postId", postController.deletePost);
 export const postRoutes = router;

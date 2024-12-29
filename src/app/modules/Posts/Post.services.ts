@@ -29,10 +29,16 @@ const getAllPost = async () => {
   return result;
 };
 
+const deletePost = async (postId: string) => {
+  const result = await POST.deleteOne({ _id: postId });
+  return result;
+};
+
 export const postServices = {
   createPost,
   getPosts,
   getAllPost,
   getPost,
   updatePost,
+  deletePost,
 };
